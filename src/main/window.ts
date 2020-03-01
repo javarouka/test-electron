@@ -1,4 +1,4 @@
-import { App, BrowserWindow, ipcMain } from 'electron';
+import { App, BrowserWindow } from 'electron';
 import * as path from 'path';
 import { dev, loadURL, nodeIntegration } from './config';
 
@@ -18,11 +18,19 @@ export const createWindow = async (app: App) => {
         process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
     }
 
+    // const getSourceDirectory = () => dev
+    // ? path.join(process.cwd(), 'dist')
+    // : path.join(process.resourcesPath, 'app');
+
+    // const preload = path.resolve(getSourceDirectory(), 'preload.js');
+    // const preload = path.join(app.getAppPath(), 'preload.js')
+    const preload = path.join(__dirname, 'preload.js')
+
     const win = new BrowserWindow({
         width: 1200,
         height: 600,
         webPreferences: {
-            preload: path.join(app.getAppPath(), 'preload.js'),
+            preload,
             nodeIntegration
         }
     });

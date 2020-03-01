@@ -19,6 +19,7 @@
     "name": "you",
     "email": "you@gmail.com"
   },
+  "main": "./dist/main.js",
   "license": "you",
   "bin": "./bin/cli.js",
   "scripts": {
@@ -110,6 +111,7 @@
   },
   "build": {
     "productName": "any",
+    "appId": "org.your.productname",
     "mac": {
       "category": "development"
     },
@@ -117,8 +119,8 @@
       "output": "release"
     },
     "files": [
-      "dist/",
-      "node_modules/",
+      "dist/*",
+      "node_modules/**/*",
       "package.json"
     ],
     "linux": {
