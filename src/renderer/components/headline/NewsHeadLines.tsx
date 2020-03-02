@@ -46,7 +46,8 @@ const NewsHeadLines = () => {
     const [khan, setKhan] = React.useState<NewsHeadLine>()
     const [ohm, setOhm] = React.useState<NewsHeadLine>()
     const [mk, setMK] = React.useState<NewsHeadLine>()
-    const [saveCount, setSaved] = React.useState<number>(0)
+    const [notiCount, updateNoti] = React.useState<number>(0)
+    const [notiMessage, setNotifiyMessage] = React.useState<string>("")
 
     const exportFile = () => {
         window.backend.exportText({
@@ -56,8 +57,9 @@ const NewsHeadLines = () => {
             khan,
             ohm,
             mk,
-        }).then(() => {
-            setSaved(saveCount + 1)
+        }).then((path) => {
+            updateNoti(notiCount + 1)
+            setNotifiyMessage(`${path} 로 저장되었습니다`)
         })
     }
 
@@ -82,7 +84,7 @@ const NewsHeadLines = () => {
 
     return (
         <Wrapper>
-            <NotificationMessage show={saveCount} message={"저장되었습니다"} />
+            <NotificationMessage show={notiCount} message={notiMessage} />
             <SubTitle>
                 각 신문 헤드라인
                 <Button onClick={exportFile}>내보내기</Button>

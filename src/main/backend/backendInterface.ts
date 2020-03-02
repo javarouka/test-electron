@@ -1,10 +1,10 @@
 import { ipcRenderer, IpcRendererEvent } from 'electron';
 
 const backendInterface: BackendInterface = {
-    exportText: (content: Record<string, NewsHeadLine | undefined>): Promise<void> => {
+    exportText: (content: Record<string, NewsHeadLine | undefined>): Promise<string> => {
         return new Promise((resolve, reject) => {
             ipcRenderer.once('export:response', (event: IpcRendererEvent, path: string) => {
-                resolve()
+                resolve(path)
             });
             ipcRenderer.send('export:request');
         })

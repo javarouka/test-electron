@@ -14,10 +14,10 @@ const installExtensions = async () => {
 
 export const createWindow = async (app: App) => {
     if (dev) {
-        await installExtensions();
+        // await installExtensions();
         process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
     }
-    
+
     const preload = path.join(__dirname, 'preload.js')
 
     const win = new BrowserWindow({

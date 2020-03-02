@@ -2,12 +2,18 @@ import * as React from "react"
 import styled from "styled-components"
 import { Text } from "../base/index"
 
-const Wrapper = styled(Text)`
+const Wrapper = styled(Text)<{ show?: boolean }>`
+    position: fixed;
+    width: 50%;
+    right: 0;
+    top: 0;
+    margin: 0 auto;
     padding: 8px 16px;
     text-align: center;
     background-color: #555;
     color: white;
     font-size: 12px;
+    border-radius: 8px;
 `
 
 type Props = {
@@ -23,7 +29,7 @@ export default (props: Props) => {
         setVisible(true)
         setTimeout(() => {
             setVisible(false)
-        }, 5000)
+        }, 10000)
     }, [show])
 
     if(!show || !message) {

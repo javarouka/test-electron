@@ -14,7 +14,7 @@ type CrawlerMetaInfo = {
 }
 
 interface BackendInterface {
-    exportText(content: Record<string, NewsHeadLine | undefined>): Promise<void>
+    exportText(content: Record<string, NewsHeadLine | undefined>): Promise<string>
     crawlingNewsHeadline(type: string): Promise<NewsHeadLine>
 }
 
