@@ -6,7 +6,7 @@ import { NewsPlaform } from '../../../domain/news';
 export default class NewsCrawler {
 
     async crawl(type: string): Promise<NewsHeadLine> {
-        console.log(`crawling ${type} start.`)
+        console.log(`> crawling ${type} start.`)
         const meta = MetaInfoMap[type]
         return new Promise((resolve, reject) => {
             const request = electrom.net.request({
@@ -23,13 +23,13 @@ export default class NewsCrawler {
     private handleResponse(response: electrom.IncomingMessage, type: string, resolve: (value?: NewsHeadLine | PromiseLike<NewsHeadLine> | undefined) => void, meta: CrawlerMetaInfo) {
         let body = '';
         response.on('error', (error: Error) => {
-            console.error(`crawling ERROR: ${JSON.stringify(error)}`);
+            console.error(`> crawling ERROR: ${JSON.stringify(error)}`);
         });
         response.on("data", (chunk: Buffer) => {
             body = this.accumateBody(type, body, chunk);
         });
         response.on('end', function () {
-            console.log(`crawling ${type} ok. size > ${body.length}`);
+            console.log(`> crawling ${type} ok. size > ${body.length}`);
             resolve({
                 title: meta.selector(body).trim()
             });

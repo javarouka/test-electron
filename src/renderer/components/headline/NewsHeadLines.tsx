@@ -5,13 +5,26 @@ import styled from 'styled-components';
 import HeadLineUnit from './HeadLineUnit'
 import NotificationMessage from '../base/NotificationMessage'
 
+ // Oooooooops.
+// const [
+//     _chosun,
+//     _donga,
+//     _is,
+// ] = await Promise.all([
+//     window.backend.crawlingNewsHeadline(NewsPlaform.CHOSUN),
+//     window.backend.crawlingNewsHeadline(NewsPlaform.DONGA),
+//     window.backend.crawlingNewsHeadline(NewsPlaform.IS)
+// ])
+// setChosun(_chosun)
+// setDonga(_donga)
+// setIS(_is)
+
 const Wrapper = styled(Block)`
     ${SubTitle} {
         display: flex;
         align-items: center;
         justify-content: space-between;
         ${Button} {
-            
         }
     }
     ${SubTitle} {
@@ -49,21 +62,7 @@ const NewsHeadLines = () => {
     }
 
     React.useEffect(() => {
-        (async function anyNameFunction() {
-
-            // Oooooooops.
-            // const [
-            //     _chosun,
-            //     _donga,
-            //     _is,
-            // ] = await Promise.all([
-            //     window.backend.crawlingNewsHeadline(NewsPlaform.CHOSUN),
-            //     window.backend.crawlingNewsHeadline(NewsPlaform.DONGA),
-            //     window.backend.crawlingNewsHeadline(NewsPlaform.IS)
-            // ])
-            // setChosun(_chosun)
-            // setDonga(_donga)
-            // setIS(_is)
+        (async function loadNews() {
 
             const _chosun = await window.backend.crawlingNewsHeadline(NewsPlaform.CHOSUN)
             setChosun(_chosun)
