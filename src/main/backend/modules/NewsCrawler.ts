@@ -1,7 +1,7 @@
 import * as electrom from 'electron';
 import * as icov from 'iconv-lite';
-import MetaInfoMap from './metainfoMap';
-import { NewsPlaform } from '../../domain/news';
+import MetaInfoMap from '../metainfoMap';
+import { NewsPlaform } from '../../../domain/news';
 
 export default class NewsCrawler {
 
